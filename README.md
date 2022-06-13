@@ -8,4 +8,4 @@
 
 ###Additions
 -faster "bug repellent" <br>
--improved game over screen <br>
+-improved lose/win screen <br>
