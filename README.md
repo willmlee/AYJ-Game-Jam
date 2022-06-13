@@ -7,4 +7,5 @@
 -second player <br>
 
 ###Additions
--faster "bug repellent"
+-faster "bug repellent" <br>
+-improved game over screen <br>
