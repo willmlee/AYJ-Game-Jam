@@ -65,14 +65,14 @@ function create() {
   // Creating static platforms
   const platforms = this.physics.add.staticGroup();
   platforms.create(225, 490, "platform").setScale(1, 0.3).refreshBody();
-
+  const barrier = this.physics.add.staticGroup();
+  
    //barrier
   var x = Phaser.Math.Between(0, 350);
   var display = Phaser.Math.Between(1, 2);
 
   if(display === 1) {
-    const barrier = this.physics.add.staticGroup();
-    barrier.create(x, 425, 'barrier').setScale(0.2, 0.1).refreshBody();
+    barrier.create(x, 425, "barrier").setScale(0.2, 0.1).refreshBody();
   }
   
   // Displays the initial number of bugs, this value is initially hardcoded as 24
@@ -107,7 +107,9 @@ function create() {
     let randomBug = Phaser.Utils.Array.GetRandom(
       gameState.enemies.getChildren()
     );
-    pellets.create(randomBug.x, randomBug.y, "bugPellet");
+    if(gameState.active === true) {
+      pellets.create(randomBug.x, randomBug.y, "bugPellet");
+    }
   };
   gameState.pelletsLoop = this.time.addEvent({
     delay: 300,
@@ -120,15 +122,17 @@ function create() {
     pellet.destroy();
   });
 
- /* this.physics.add.collider(pellets, barrier, function (pellet) {
+//checks if pellets hit barrier
+  this.physics.add.collider(pellets, barrier, function(pellet) {
     pellet.destroy();
-  }); */
+  }); 
   
 
   this.physics.add.collider(pellets, gameState.player, () => {
+    this.physics.pause();
+    this.cameras.main.shake(240, .01, false);
     gameState.active = false;
     gameState.pelletsLoop.destroy();
-    this.physics.pause();
     gameState.enemyVelocity = 1;
     this.add.text(150, 150, "Game Over", {
       fontSize: "30px",
@@ -144,6 +148,11 @@ function create() {
 
   gameState.bugRepellent = this.physics.add.group();
 
+  //check for bug repelent colliding with barrier
+  this.physics.add.collider(gameState.bugRepellent, barrier, function(bugRepellent) {
+    bugRepellent.destroy();
+  });
+  
   this.physics.add.collider(
     gameState.enemies,
     gameState.bugRepellent,
