@@ -9,8 +9,10 @@
 ### Additions
 -faster "bug repellent" <br>
 -improved lose/win screen <br>
+-barrier (does not collide with anything at the moment) <br>
 
 ### Issues
 -scenes are not playing in correct order <br>
 -do not know how to integrate the scenes into config in game.js <br>
 -scenes not switching <br>
+-pellets not colliding with barrier <br>
