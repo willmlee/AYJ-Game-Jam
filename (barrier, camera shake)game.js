@@ -1,3 +1,4 @@
+//loads images used in the game
 function preload() {
   this.load.image(
     "bug1",
@@ -54,6 +55,7 @@ function numOfTotalEnemies() {
   return totalEnemies;
 }
 
+//sets bug velocity
 const gameState = {
   enemyVelocity: 1,
 };
@@ -79,7 +81,7 @@ function create() {
   platforms.create(225, 490, "platform").setScale(1, 0.3).refreshBody();
   const barrier = this.physics.add.staticGroup();
   
-   //barrier
+  //barrier
   var x = Phaser.Math.Between(0, 350);
   var display = Phaser.Math.Between(1, 2);
 
@@ -114,6 +116,7 @@ function create() {
     }
   }
 
+  //creating pellets
   const pellets = this.physics.add.group();
   const genPellet = () => {
     let randomBug = Phaser.Utils.Array.GetRandom(
@@ -130,6 +133,7 @@ function create() {
     loop: true,
   });
 
+  //collision detection between pellets and the platform
   this.physics.add.collider(pellets, platforms, function (pellet) {
     pellet.destroy();
   });
@@ -139,7 +143,7 @@ function create() {
     pellet.destroy();
   }); 
   
-
+  //collisions check between pellets and player
   this.physics.add.collider(pellets, gameState.player, () => {
     this.physics.pause();
     this.cameras.main.shake(240, .01, false);
@@ -158,6 +162,7 @@ function create() {
     });
   });
 
+  //applies physics to bug repellent
   gameState.bugRepellent = this.physics.add.group();
 
   //check for bug repelent colliding with barrier
@@ -165,6 +170,7 @@ function create() {
     bugRepellent.destroy();
   });
   
+  //collision check between bug repellent and bugs
   this.physics.add.collider(
     gameState.enemies,
     gameState.bugRepellent,
@@ -175,6 +181,7 @@ function create() {
     }
   );
 
+  //collision detection between bugs and player
   this.physics.add.collider(gameState.enemies, gameState.player, () => {
     gameState.active = false;
     gameState.enemyVelocity = 1;
@@ -248,7 +255,7 @@ const config = {
   type: Phaser.AUTO,
   width: 450,
   height: 500,
-  backgroundColor: "b9eaff",
+  backgroundColor: "aac8fa",
   physics: {
     default: "arcade",
     arcade: {
