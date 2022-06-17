@@ -24,4 +24,4 @@ Application: We modified the game, adding a shield as well as different effects 
 Techstack: Github, Codecademy, Phaser.js, Codecademy sounds and images<br>
 
 ### Reflection
-This project has allowed us to learn how to code using "Phaser.js", a useful language for game development. Before this project, we learnt the basics of Phaser through Codecademy, learning things such as the basics, physics, animations and visual effects. (add more)
+This project has allowed us to learn how to code using "Phaser.js", a useful language for game development. Before this project, we learnt the basics of Phaser through Codecademy, learning things such as the basics, physics, animations and visual effects, along with learning how to use Codecademy's library of images and sounds. We also learnt how to work through our own problems through looking for different resources with information on how to code with Phaser.js such as (insert website). This project has also allowed for the opportunity to learn to collaboratively code with others through GitHub.
