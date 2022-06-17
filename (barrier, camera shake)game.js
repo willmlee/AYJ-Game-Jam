@@ -31,6 +31,13 @@ function preload() {
     "bugRepellent",
     "https://content.codecademy.com/courses/learn-phaser/Bug%20Invaders/bugRepellent.png"
   );
+  
+  //load sounds
+  this.load.audio('ding', 'https://content.codecademy.com/courses/SemanticHTML/dogBarking.mp3');
+
+  this.load.audio('awesome', 'https://content.codecademy.com/courses/learn-phaser/incredible.mp3');
+
+  this.load.audio('theme', 'assets/music/theme.wav');
 }
 
 // Helper Methods below:
@@ -52,6 +59,11 @@ const gameState = {
 };
 
 function create() {
+  //declare variables for sound 
+  ding = this.sound.add("ding", { loop: false });
+  awesome = this.sound.add("awesome", {loop: false});
+  theme = this.sound.add("theme", {loop: true})
+  
   // When gameState.active is true, the game is being played and not over. When gameState.active is false, then it's game over
   gameState.active = true;
 
@@ -196,10 +208,12 @@ function update() {
       gameState.bugRepellent
         .create(gameState.player.x, gameState.player.y, "bugRepellent")
         .setGravityY(-800);
+      ding.play();
     }
 
     // Add logic for winning condition and enemy movements below:
     if (numOfTotalEnemies() === 0) {
+      awesome.play();
       gameState.active = false;
       this.physics.pause();
       gameState.enemyVelocity = 1;
