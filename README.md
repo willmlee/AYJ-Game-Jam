@@ -18,10 +18,10 @@
 
 ### Working Proposal
 Idea: Modify the Codecademy project "Bug Invaders", and create a new game.<br>
-Problem: <br>
-Solution: <br>
+Problem: The codecademy "bug invaders" game was too bland, it was the same game over and over again.<br>
+Solution: We decided to add a randomized shield, as well as more sounds and a different background colour. We wanted to add more levels, increasing in difficulty as the user progressed, unfortunately we were unable to get the scenes to work properly.<br>
 Application: We modified the game, adding a shield as well as different effects such as sounds and camera shakes.<br>
-Techstack: Github, Codecademy, p5.js<br>
+Techstack: Github, Codecademy, Phaser.js, Codecademy sounds and images<br>
 
 ### Reflection
 This project has allowed us to learn how to code using "Phaser.js", a useful language for game development. Before this project, we learnt the basics of Phaser through Codecademy, learning things such as the basics, physics, animations and visual effects. (add more)
